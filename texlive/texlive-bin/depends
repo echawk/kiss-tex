@@ -1,0 +1,17 @@
+cairo
+fontconfig
+freetype-harfbuzz
+gd
+ghostscript
+gmp
+graphite2
+harfbuzz-icu
+icu
+libpng
+libXaw
+mpfr make
+pixman
+poppler
+texmf-dist
+zlib
+zziplib
