@@ -1,0 +1,15 @@
+#!/bin/sh -e
+
+echo " --> updmap-sys --syncwithtrees"
+yes | updmap-sys --syncwithtrees
+echo " --> updmap-sys"
+updmap-sys
+echo " --> mktexlsr"
+mktexlsr
+echo " --> mktexmf --all"
+mktexmf --all
+echo " --> texhash"
+texhash
+echo " --> fmtutil-sys --all"
+fmtutil-sys --all
+exit 0
