@@ -1,0 +1,29 @@
+#!/bin/sh -e
+
+mkdir -p "$1"/usr/share
+mkdir -p pkgs-packed
+mkdir -p pkgs-unpacked
+
+read -r ver _ < "${0%/*}/version"
+
+(
+    cd pkgs-packed
+    unzip ../texlive-core-$ver-src.zip?no-extract > /dev/null
+)
+
+(
+    cd pkgs-unpacked
+    find ../pkgs-packed -name '*.tar.xz' -exec tar -xf {} \;
+    find . -maxdepth 1 -name 'texmf*' -exec mv {} "$1"/usr/share/ \;
+    find . -type d -mindepth 1 -exec mkdir -p "$1"/usr/share/texmf-dist/{} \;
+    find . -type f -exec mv {} "$1"/usr/share/texmf-dist/{} \;
+)
+
+# Fix paths
+sed -i -e 's:^\(TEXMFROOT *= *\)$SELFAUTOPARENT$:\1/usr/share:g' \
+    "$1"/usr/share/texmf-dist/web2c/texmf.cnf
+sed -i -e 's:\$TEXMFROOT/tlpkg:\$TEXMFROOT/texmf-dist/tlpkg:g' \
+    "$1"/usr/share/texmf-dist/scripts/texlive/updmap.pl \
+    "$1"/usr/share/texmf-dist/scripts/texlive/fmtutil.pl \
+
+rm -rf pkgs-packed pkgs-unpacked
