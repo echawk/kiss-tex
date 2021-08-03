@@ -8,7 +8,7 @@ mktexlsr 1> /dev/null 2> /dev/null
 echo " --> mktexmf --all"
 mktexmf --all 1> /dev/null
 echo " --> texhash"
-texhash > /dev/null
+texhash 1> /dev/null 2> /dev/null
 echo " --> fmtutil-sys --all"
 fmtutil-sys --all 1> /dev/null 2> /dev/null
 exit 0
