@@ -1,0 +1,4 @@
+texmf-dist
+#texlive-pictures
+xz  make
+zip make
