@@ -6,10 +6,10 @@ echo " --> updmap-sys"
 updmap-sys
 echo " --> mktexlsr"
 mktexlsr
-echo " --> texhash"
-texhash
 echo " --> fmtutil-sys --all"
 fmtutil-sys --all
 echo " --> mktexmf --all"
 mktexmf --all
+echo " --> texhash"
+texhash
 exit 0
