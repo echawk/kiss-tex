@@ -1,0 +1,5 @@
+texmf-dist
+# python - for scripts from lilyglyphs
+# fontforge - for scripts from lilyglyphs
+xz  make
+zip make
