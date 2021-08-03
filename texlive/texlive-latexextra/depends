@@ -1,0 +1,6 @@
+texmf-dist
+# java - for pdfannotextractor
+# python-pygments - for pygmentex
+# texlive-pictures - for overpic
+xz  make
+zip make
