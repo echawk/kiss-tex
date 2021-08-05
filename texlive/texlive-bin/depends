@@ -11,6 +11,7 @@ libpng
 libXaw
 mpfr make
 pixman
+perl
 poppler
 texmf-dist
 zlib
