@@ -18,8 +18,9 @@ meson \
     --prefix=/usr \
     -Dpkg_config_path=/usr/lib/pkgconfig \
     -Ddefault_library=both \
-    -Dglib=enabled \
+    -Dglib=disabled \
     -Dfreetype=enabled \
+    -Dgobject=disabled \
     -Dicu=enabled \
     -Dicu_builtin=false \
     -Dbenchmark=disabled \
