@@ -15,6 +15,7 @@ in order for LaTeX to build.
 ## repo structure
 
 `extra` - contains needed libraries and utilities to build LaTeX; it's not strictly nessecary
+
 `texlive` - contains LaTeX itself
 
 **NOTE:** - texlive-* packages may not be fully functional
