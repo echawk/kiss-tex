@@ -7,7 +7,7 @@ read -r ver _ < "${0%/*}/version"
 
 (
     cd pkgs-packed
-    unzip ../texlive-*-$ver-src.zip?no-extract > /dev/null
+    unzip ../texlive-*-"$ver"-src.zip?no-extract > /dev/null
 
 )
 
