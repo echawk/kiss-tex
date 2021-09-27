@@ -1,0 +1,15 @@
+#!/bin/sh -e
+
+patch -Np1 < 2010_add_build_timestamp_setting.patch
+
+sed -i "s/gscms_transformm_color_const/gscms_transform_color_const/" base/gsicc_lcms2.c
+
+./configure \
+    --prefix=/usr \
+    --disable-gtk \
+    --disable-dbus \
+    --with-drivers=ALL \
+    --with-fontpaths=/usr/share/ghostscript/fonts/:/usr/share/fonts
+
+make so all
+make DESTDIR="$1" install-so install
