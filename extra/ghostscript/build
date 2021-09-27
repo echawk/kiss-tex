@@ -13,3 +13,5 @@ sed -i "s/gscms_transformm_color_const/gscms_transform_color_const/" base/gsicc_
 
 make so all
 make DESTDIR="$1" install-so install
+
+rm -rf "$1/usr/share/man/de/"
