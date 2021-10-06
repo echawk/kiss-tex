@@ -1,6 +1,20 @@
 #!/bin/sh -e
 
-export DESTDIR="$1"
+cat << EOF | ed zzip/CMakeLists.txt
+289,357s/bash -c/sh -c
+203,243s/\${BASH}/sh/g
+38,41d
+w
+q
+EOF
+
+cat << EOF | ed docs/CMakeLists.txt
+105,117s/\${MV}/mv/g
+122,152s/\${BASH}/sh/g
+25d
+w
+q
+EOF
 
 cmake -B build \
     -DCMAKE_BUILD_TYPE=None \
