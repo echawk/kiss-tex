@@ -4,14 +4,13 @@ freetype-harfbuzz
 gd
 ghostscript
 gmp
-graphite2
 harfbuzz-icu
 icu
-libpng
 libXaw
+libpng
 mpfr make
-pixman
 perl
+pixman
 poppler
 texmf-dist
 zlib
