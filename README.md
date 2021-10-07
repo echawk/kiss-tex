@@ -12,6 +12,9 @@ for the latex packages (texlive-latexextra, etc)
 You will need to enable both the `extra` repo and the `texlive` repo
 in order for LaTeX to build.
 
+- You will also need kiss-xorg's `extra` and `xorg` repo for other dependencies.
+- You will also need to place kiss-tex's `extra` *before* kiss-xorg's, since kiss-tex uses a fork of freetype-harfbuzz
+
 ## repo structure
 
 `extra` - contains needed libraries and utilities to build LaTeX; it's not strictly nessecary
@@ -19,24 +22,18 @@ in order for LaTeX to build.
 `texlive` - contains LaTeX itself
 
 **NOTE:** - texlive-* packages may not be fully functional
-(they all share a build file to ease maintenance),
-if this is the case, open an issue.
+as they all share a build file to ease maintenance, so scripts may be missing.
+If this is the case, open an issue.
 
 ## installing
 
-You will first need to build and install graphite-harfbuzz:
+You will first need to update freetype-harfbuzz:
 
 ```sh
-kiss b graphite-harfbuzz
-kiss i graphite-harfbuzz
+kiss u # make sure freetype-harfbuzz is from kiss-tex!
+kiss b freetype-harfbuzz
+kiss i freetype-harfbuzz
 ```
-
-Swap to graphite-harfbuzz using kiss-alternative
-
-```sh
-kiss a | grep graphite-harfbuzz | kiss a -
-```
-
 Now proceed onto building texlive-bin.
 
 ```sh
