@@ -1,5 +1,6 @@
 #!/bin/sh -e
 
+rm -rf expat jbig2dec jpeg lcms2mt libpng openjpeg tiff zlib
 patch -Np1 < 2010_add_build_timestamp_setting.patch
 
 sed "s/gscms_transformm_color_const/gscms_transform_color_const/" \
@@ -13,6 +14,6 @@ sed "s/gscms_transformm_color_const/gscms_transform_color_const/" \
     --with-fontpaths=/usr/share/ghostscript/fonts/:/usr/share/fonts
 
 make so all
-make DESTDIR="$1" install-so install
+make install-so install
 
 rm -rf "$1/usr/share/man/de/"
