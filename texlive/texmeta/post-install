@@ -1,14 +1,14 @@
 #!/bin/sh
 echo " --> updmap-sys --syncwithtrees"
-yes | updmap-sys --syncwithtrees 1> /dev/null 2> /dev/null
+yes | updmap-sys --syncwithtrees 1> /dev/null 2> /dev/null || :
 echo " --> updmap-sys"
-updmap-sys 1> /dev/null 2> /dev/null
+updmap-sys 1> /dev/null 2> /dev/null || :
 echo " --> mktexlsr"
-mktexlsr 1> /dev/null 2> /dev/null
+mktexlsr 1> /dev/null 2> /dev/null || :
 echo " --> mktexmf --all"
-mktexmf --all 1> /dev/null
+mktexmf --all 1> /dev/null || :
 echo " --> texhash"
-texhash 1> /dev/null 2> /dev/null
+texhash 1> /dev/null 2> /dev/null || :
 echo " --> fmtutil-sys --all"
-fmtutil-sys --all 1> /dev/null 2> /dev/null
+fmtutil-sys --all 1> /dev/null 2> /dev/null || :
 exit 0
