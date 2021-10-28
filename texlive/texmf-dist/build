@@ -20,10 +20,16 @@ read -r ver _ < "${0%/*}/version"
 )
 
 # Fix paths
-sed -i -e 's:^\(TEXMFROOT *= *\)$SELFAUTOPARENT$:\1/usr/share:g' \
-    "$1"/usr/share/texmf-dist/web2c/texmf.cnf
-sed -i -e 's:\$TEXMFROOT/tlpkg:\$TEXMFROOT/texmf-dist/tlpkg:g' \
+sed -e 's:^\(TEXMFROOT *= *\)$SELFAUTOPARENT$:\1/usr/share:g' \
+    "$1"/usr/share/texmf-dist/web2c/texmf.cnf > _
+mv -f _ "$1"/usr/share/texmf-dist/web2c/texmf.cnf
+
+for f in \
     "$1"/usr/share/texmf-dist/scripts/texlive/updmap.pl \
-    "$1"/usr/share/texmf-dist/scripts/texlive/fmtutil.pl \
+    "$1"/usr/share/texmf-dist/scripts/texlive/fmtutil.pl
+do
+    sed -e 's:\$TEXMFROOT/tlpkg:\$TEXMFROOT/texmf-dist/tlpkg:g' "$f" > _
+    mv -f _ "$f"
+done
 
 rm -rf pkgs-packed pkgs-unpacked
