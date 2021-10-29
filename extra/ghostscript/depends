@@ -2,11 +2,6 @@ fontconfig
 freetype-harfbuzz
 jbig2dec
 lcms
-libICE
-libSM
-libX11
-libXext
-libXt
 libjpeg-turbo
 libpng
 openjpeg2
