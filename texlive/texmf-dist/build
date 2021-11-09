@@ -30,6 +30,7 @@ for f in \
 do
     sed -e 's:\$TEXMFROOT/tlpkg:\$TEXMFROOT/texmf-dist/tlpkg:g' "$f" > _
     mv -f _ "$f"
+    chmod +x "$f"
 done
 
 rm -rf pkgs-packed pkgs-unpacked
