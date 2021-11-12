@@ -1,22 +1,13 @@
 #!/bin/sh -e
 
-cat << EOF | ed zzip/CMakeLists.txt
-289,357s/bash -c/sh -c
-203,243s/\${BASH}/sh/g
-38,41d
-w
-q
-EOF
-
-cat << EOF | ed docs/CMakeLists.txt
-105,117s/\${MV}/mv/g
-122,152s/\${BASH}/sh/g
-25d
-w
-q
-EOF
+# Remove bash dependency.
+sed zzip/CMakeLists.txt > _ \
+    -e 's/bash -c/sh -c/' \
+    -e '/UnixCommands/d'
+mv -f _ zzip/CMakeLists.txt
 
 cmake -B build \
+    -DBASH:FILEPATH=/usr/bin/sh \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
