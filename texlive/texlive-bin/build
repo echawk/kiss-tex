@@ -6,7 +6,7 @@ d(){
 
 # Check if wayland is installed.
 kiss l wayland && {
-    cf=" --without-x"
+    cf="--without-x"
 }
 
 # If libX11 is installed, then check for libXaw.
