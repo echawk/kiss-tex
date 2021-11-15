@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 echo " --> updmap-sys --syncwithtrees"
 yes | updmap-sys --syncwithtrees 1> /dev/null 2> /dev/null || :
 echo " --> updmap-sys"
