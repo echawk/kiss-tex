@@ -6,7 +6,6 @@ ghostscript
 gmp
 harfbuzz-icu
 icu
-libXaw
 libpng
 mpfr make
 perl

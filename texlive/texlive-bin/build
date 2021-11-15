@@ -1,5 +1,19 @@
 #!/bin/sh -e
 
+d(){
+    echo "$1" ; exit 1
+}
+
+# Check if wayland is installed.
+kiss l wayland && {
+    cf=" --without-x"
+}
+
+# If libX11 is installed, then check for libXaw.
+kiss l libX11 && {
+    kiss l libXaw || d "-> libXaw not installed"
+}
+
 _luatex="dvilualatex dviluatex lualollipop lualatex"
 _pdftex="amstex cslatex csplain eplain etex jadetex latex lollipop mex
     mllatex mltex pdfetex pdfcslatex pdfcsplain pdfjadetex pdflatex
@@ -62,7 +76,8 @@ mkdir -p build && cd build
     --with-system-poppler \
     --with-system-zlib \
     --with-system-zziplib \
-    --without-texinfo
+    --without-texinfo \
+    "$cf"
 
 make
 make DESTDIR="$1" install
