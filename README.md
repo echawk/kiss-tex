@@ -12,9 +12,6 @@ for the latex packages (texlive-latexextra, etc)
 You will need to enable both the `extra` repo and the `texlive` repo
 in order for LaTeX to build.
 
-- You will also need kiss-xorg's `extra` and `xorg` repo for other dependencies.
-- You will also need to place kiss-tex's `extra` *before* kiss-xorg's, since kiss-tex uses a fork of freetype-harfbuzz
-
 ## repo structure
 
 `extra` - contains needed libraries and utilities to build LaTeX; it's not strictly nessecary
