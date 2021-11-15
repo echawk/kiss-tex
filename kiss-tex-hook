@@ -1,0 +1,26 @@
+#!/bin/sh -e
+
+# This hook is meant to supplement the
+# [kiss-tex](https://github.com/ehawkvu/kiss-tex)
+# repo. It contains workarounds for certain packages.
+
+case "$1" in
+    pre-build)
+        case "$2" in
+            # If we are missing any of the dependencies in the 'base' version
+            # of freetype-harfbuzz, then fail.
+            # This is so that wayland people can also use this package without
+            # having to fork.
+            freetype-harfbuzz)
+                for pkg in $(diff \
+                    "$(kiss s freetype-harfbuzz | sed -n "2p")/depends" \
+                    "$(kiss s freetype-harfbuzz | sed -n "1p")/depends" \
+                    | grep '<' \
+                    | cut -d' ' -f2)
+                do
+                    kiss l "$pkg" || exit 1
+                done
+            ;;
+        esac
+    ;;
+esac
