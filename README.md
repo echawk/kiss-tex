@@ -27,7 +27,13 @@ If this is the case, open an issue.
 
 ## installing
 
-You will first need to update freetype-harfbuzz:
+First, add the kiss hook for this repo to `KISS_HOOK`:
+
+```sh
+echo KISS_HOOK="/path/to/kiss-tex/kiss-tex-hook:$KISS_HOOK" >> $HOME/.profile
+```
+
+You will then need to update freetype-harfbuzz:
 
 ```sh
 kiss u # make sure freetype-harfbuzz is from kiss-tex!
