@@ -14,13 +14,12 @@ case "$1" in
             freetype-harfbuzz)
                 for pkg in $(diff \
                     "$(kiss s freetype-harfbuzz | sed -n "2p")/depends" \
-                    "$(kiss s freetype-harfbuzz | sed -n "1p")/depends" \
-                    | grep '<' \
-                    | cut -d' ' -f2)
-                do
-                    kiss l "$pkg" || exit 1
+                    "$(kiss s freetype-harfbuzz | sed -n "1p")/depends" |
+                      grep '<' |
+                      cut -d' ' -f2); do
+                    kiss list "$pkg" || exit 1
                 done
-            ;;
+                ;;
         esac
-    ;;
+        ;;
 esac
