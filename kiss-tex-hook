@@ -13,8 +13,8 @@ case "$1" in
             # having to fork.
             freetype-harfbuzz)
                 for pkg in $(diff \
-                    "$(kiss s freetype-harfbuzz | sed -n "2p")/depends" \
-                    "$(kiss s freetype-harfbuzz | sed -n "1p")/depends" |
+                    "$(kiss search "$2" | sed -n "2p")/depends" \
+                    "$(kiss search "$2" | sed -n "1p")/depends" |
                       grep '<' |
                       cut -d' ' -f2); do
                     kiss list "$pkg" || exit 1
