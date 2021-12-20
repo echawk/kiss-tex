@@ -5,13 +5,13 @@ mkdir -p pkgs-packed
 mkdir -p pkgs-unpacked
 read -r ver _ < "${0%/*}/version"
 
-(
+(   
     cd pkgs-packed
     unzip ../texlive-*-"$ver"-src.zip?no-extract > /dev/null
 
 )
 
-(
+(   
     cd pkgs-unpacked
     find ../pkgs-packed -name '*.tar.xz' -exec tar -xf {} \;
     find . -maxdepth 1 -name 'texmf*' -exec mv {} "$1"/usr/share/ \;
