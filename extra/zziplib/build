@@ -1,9 +1,10 @@
 #!/bin/sh -e
 
 # Remove bash dependency.
-sed zzip/CMakeLists.txt > _ \
+sed zzip/CMakeLists.txt \
     -e 's/bash -c/sh -c/' \
-    -e '/UnixCommands/d'
+    -e '/UnixCommands/d' > _
+
 mv -f _ zzip/CMakeLists.txt
 
 cmake -B build \

@@ -3,9 +3,11 @@
 # Change the order for checking installed compilers as
 # the ccache clang symlink might exist, but clang might not be installed.
 sed 's/clang gcc cc/cc clang gcc/g' \
-    source/configure > _ ; mv -f _ source/configure
+    source/configure > _
+mv -f _ source/configure
 sed 's/clang++ g++ c++/c++ clang++ g++/g' \
-    source/configure > _ ; mv -f _ source/configure
+    source/configure > _
+mv -f _ source/configure
 
 chmod +x source/configure
 source/configure \
