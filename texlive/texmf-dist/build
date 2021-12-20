@@ -6,12 +6,12 @@ mkdir -p pkgs-unpacked
 
 read -r ver _ < "${0%/*}/version"
 
-(
+(   
     cd pkgs-packed
     unzip ../texlive-core-$ver-src.zip?no-extract > /dev/null
 )
 
-(
+(   
     cd pkgs-unpacked
     find ../pkgs-packed -name '*.tar.xz' -exec tar -xf {} \;
     find . -maxdepth 1 -name 'texmf*' -exec mv {} "$1"/usr/share/ \;
@@ -26,8 +26,7 @@ mv -f _ "$1"/usr/share/texmf-dist/web2c/texmf.cnf
 
 for f in \
     "$1"/usr/share/texmf-dist/scripts/texlive/updmap.pl \
-    "$1"/usr/share/texmf-dist/scripts/texlive/fmtutil.pl
-do
+    "$1"/usr/share/texmf-dist/scripts/texlive/fmtutil.pl; do
     sed -e 's:\$TEXMFROOT/tlpkg:\$TEXMFROOT/texmf-dist/tlpkg:g' "$f" > _
     mv -f _ "$f"
     chmod +x "$f"
