@@ -56,8 +56,8 @@ export CFLAGS="$CFLAGS -L$DESTDIR/usr/lib "
 export PKG_CONFIG_PATH="$DESTDIR/usr/lib/pkgconfig"
 
 # Point Harfbuzz to the Freetype files.
-export CXXFLAGS="$CXXFLAGS -I$DESTDIR/usr/include/freetype2"
-export CXXFLAGS="$CXXFLAGS -L$DESTDIR/usr/lib"
+export CXXFLAGS="$CXXFLAGS -I$DESTDIR/usr/include/"
+export CXXFLAGS="$CXXFLAGS -L$DESTDIR/usr/lib/"
 
 build_freetype -Dharfbuzz=disabled
 build_graphite
