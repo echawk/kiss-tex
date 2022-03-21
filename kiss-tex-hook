@@ -12,13 +12,11 @@ case "$1" in
             # This is so that wayland people can also use this package without
             # having to fork.
             freetype-harfbuzz)
-                for pkg in $(diff \
-                    "$(kiss search "$2" | sed -n "2p")/depends" \
-                    "$(kiss search "$2" | sed -n "1p")/depends" |
+                diff "$(kiss search "$2" | sed -n "2p")/depends" \
+                     "$(kiss search "$2" | sed -n "1p")/depends" |
                       grep '<' |
-                      cut -d' ' -f2); do
-                    kiss list "$pkg" || exit 1
-                done
+                      cut -d' ' -f2 |
+                      xargs kiss list || exit 1
                 ;;
         esac
         ;;
