@@ -5,15 +5,13 @@ d() {
     exit 1
 }
 
-# Check if wayland is installed.
-kiss list wayland && {
-    cf="--without-x"
-}
-
 # If libX11 is installed, then check for libXaw.
-kiss list libX11 && {
+if kiss list libX11; then
     kiss list libXaw || d "-> libXaw not installed"
-}
+else
+    # Otherwise assume a wayland system & disable X.
+    cf="--without-x"
+fi
 
 _luatex="dvilualatex dviluatex lualollipop lualatex"
 _pdftex="amstex cslatex csplain eplain etex jadetex latex lollipop mex
