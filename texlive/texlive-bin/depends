@@ -4,6 +4,7 @@ freetype-harfbuzz
 gd
 ghostscript
 gmp
+harfbuzz-icu
 icu
 libpng
 mpfr make

@@ -1,7 +1,5 @@
 cmake make
 expat
-glib
-icu
 libdrm
 libpng
 mesa
