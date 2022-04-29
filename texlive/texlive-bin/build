@@ -5,6 +5,8 @@ d() {
     exit 1
 }
 
+pkg-config --exists harfbuzz-icu || d "-> harfbuzz doesn't have icu support"
+
 # If libX11 is installed, then check for libXaw.
 if kiss list libX11; then
     kiss list libXaw || d "-> libXaw not installed"

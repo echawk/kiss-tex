@@ -36,11 +36,11 @@ build_harfbuzz() (
         -Dprefix=/usr \
         -Dpkg_config_path="$DESTDIR/usr/lib/pkgconfig" \
         -Ddefault_library=both \
-        -Dglib=disabled \
+        -Dglib=enabled \
         -Dfreetype=enabled \
         -Dgobject=disabled \
         -Dcairo=disabled \
-        -Dicu=disabled \
+        -Dicu=enabled \
         -Dgraphite=enabled \
         -Dbenchmark=disabled \
         -Dtests=disabled \
