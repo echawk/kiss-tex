@@ -5,7 +5,7 @@
 mkdir -p tmp
 export DESTDIR="$PWD/tmp"
 
-meson \
+meson setup \
     -Dprefix=/usr \
     -Dglib=enabled \
     -Dicu=enabled \
@@ -14,7 +14,7 @@ meson \
     -Dcairo=disabled \
     -Ddocs=disabled \
     -Dtests=disabled \
-    . output
+    output
 
 ninja -C output
 ninja -C output install
