@@ -3,13 +3,13 @@
 build_freetype() (
     cd freetype
 
-    meson \
+    meson setup \
         -Dprefix=/usr \
         -Ddefault_library=both \
         -Dbzip2=disabled \
         -Dzlib=disabled \
         "$@" \
-        . output
+        output
 
     ninja -C output
     ninja -C output install
@@ -32,7 +32,7 @@ build_graphite() (
 build_harfbuzz() (
     cd harfbuzz
 
-    meson \
+    meson setup \
         -Dprefix=/usr \
         -Dpkg_config_path="$DESTDIR/usr/lib/pkgconfig" \
         -Ddefault_library=both \
@@ -44,7 +44,7 @@ build_harfbuzz() (
         -Dgraphite=enabled \
         -Dbenchmark=disabled \
         -Dtests=disabled \
-        . output
+        output
 
     ninja -C output
     ninja -C output install
