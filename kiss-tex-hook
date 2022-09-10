@@ -14,9 +14,8 @@ case "$1" in
             freetype-harfbuzz)
                 diff "$(kiss search "$2" | sed -n "2p")/depends" \
                      "$(kiss search "$2" | sed -n "1p")/depends" |
-                      grep '<' |
-                      cut -d' ' -f2 |
-                      xargs -I{} kiss list {} || exit 1
+                     awk '/</ { print $2 }' |
+                     xargs -I{} kiss list {} || exit 1
                 ;;
         esac
         ;;
