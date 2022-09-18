@@ -40,7 +40,7 @@ build_harfbuzz() (
         -Dfreetype=enabled \
         -Dgobject=disabled \
         -Dcairo=disabled \
-        -Dicu=disabled \
+        -Dicu=enabled \
         -Dgraphite=enabled \
         -Dbenchmark=disabled \
         -Dtests=disabled \
