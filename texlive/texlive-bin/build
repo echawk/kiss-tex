@@ -1,5 +1,8 @@
 #!/bin/sh -e
 
+# It's ok to ignore unused variables.
+# shellcheck disable=2034
+
 d() {
     echo "$1"
     exit 1
