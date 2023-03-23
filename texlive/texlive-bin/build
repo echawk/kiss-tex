@@ -44,6 +44,7 @@ mkdir -p build && cd build
     --enable-dvipsk \
     --enable-ps2eps \
     --enable-psutils \
+    --enable-tex4htk \
     --disable-bibtex-x \
     --disable-chktex \
     --disable-cjkutils \
@@ -58,7 +59,6 @@ mkdir -p build && cd build
     --disable-pdfopen \
     --disable-ps2pkm \
     --disable-t1utils \
-    --disable-tex4htk \
     --disable-ttf2pk2 \
     --disable-vlna \
     --disable-xindy \
