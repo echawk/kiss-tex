@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# Maintenance script to update 'texlive/' to the latest version from Arch Linux.
+
+t="$(mktemp)"
+
+curl -s https://sources.archlinux.org/other/texlive/ |
+    grep href |
+    cut -d'"' -f2 |
+    grep 'zip$' |
+    sort >"$t"
+
+for pkg in $(cut -d'-' -f1-2 <"$t" | sort -u); do
+    # Get the latest version.
+    nver=$(grep "$pkg" "$t" | tac | sed q | cut -d'-' -f3)
+    # If we actually have a package for the zip file, then update.
+    if [ -d "texlive/$pkg" ]; then
+        echo "$nver 1" >"texlive/$pkg"/version
+    fi
+done
+rm -- "$t"
+
+# Now make the git commits for every updated package.
+for d in $(git status | awk '/version$/ {print $2}' | xargs -I{} dirname {}); do
+    cd "$d" || exit
+    if [ -e version ]; then
+        git add .
+        git commit -m "$d: bump to $(awk '{print $1}' <version)"
+    fi
+    cd "$OLDPWD" || exit
+done
