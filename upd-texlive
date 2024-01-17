@@ -5,9 +5,7 @@
 t="$(mktemp)"
 
 curl -s https://sources.archlinux.org/other/texlive/ |
-    grep href |
-    cut -d'"' -f2 |
-    grep 'zip$' |
+    awk -F'"' '/href/{if($2~/.zip$/){print $2}}' |
     sort >"$t"
 
 for pkg in $(cut -d'-' -f1-2 <"$t" | sort -u); do
