@@ -3,14 +3,9 @@
 # It's ok to ignore unused variables.
 # shellcheck disable=2034
 
-d() {
-    echo "$1"
-    exit 1
-}
-
 # If libX11 is installed, then check for libXaw.
-if kiss list libX11; then
-    kiss list libXaw || d "-> libXaw not installed"
+if pkg-config --exists x11; then
+    pkg-config --exists xaw7 || cf="--without-x"
 else
     # Otherwise assume a wayland system & disable X.
     cf="--without-x"
@@ -79,7 +74,7 @@ mkdir -p build && cd build
     --with-system-zlib \
     --with-system-zziplib \
     --without-texinfo \
-    "$cf"
+    "${cf:-}"
 
 make
 make DESTDIR="$1" install
