@@ -1,0 +1,10 @@
+ATTN 3/8/24:
+
+This repository is on hold for updating to TeXLive 2024.
+
+The reason for this is because our upstream sources for TeX (Arch Linux)
+has changed their distribution scheme, and no longer has dedicated tarballs
+for the sources.
+
+While a solution/compromise gets worked on, I will be also adding miktex
+to this repo.
