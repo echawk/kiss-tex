@@ -1,0 +1,27 @@
+apr
+apr-util
+boost
+cairo
+cmake make
+curl
+expat
+fontconfig
+freetype-harfbuzz
+fribidi
+gd
+gmp
+icu
+libjpeg-turbo
+libmspack
+libpng
+libxslt
+log4cxx
+mpfi-git
+mpfr
+openssl
+pixman
+poppler
+popt
+potrace
+uriparser
+zziplib
