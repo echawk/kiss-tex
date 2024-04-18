@@ -1,5 +1,7 @@
 #!/bin/sh -e
 
+export DESTDIR="$1"
+
 # Remove bash dependency.
 sed zzip/CMakeLists.txt \
     -e 's/bash -c/sh -c/' \
