@@ -1,5 +1,7 @@
 #!/bin/sh -e
 
+export DESTDIR="$1"
+
 cmake -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=/usr/lib \
@@ -7,6 +9,7 @@ cmake -B build \
     -DENABLE_CPP=ON \
     -DENABLE_QT5=OFF \
     -DENABLE_QT6=OFF \
+    -DENABLE_GPGME=OFF \
     -DWITH_NSS3=OFF \
     -DENABLE_UNSTABLE_API_ABI_HEADERS=ON \
     -DBUILD_CPP_TESTS=OFF \
