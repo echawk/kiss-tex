@@ -1,5 +1,7 @@
 #!/bin/sh -e
 
+export DESTDIR="$1"
+
 rm -rf expat jbig2dec jpeg lcms2mt libpng openjpeg tiff zlib
 
 sed "s/gscms_transformm_color_const/gscms_transform_color_const/" \
