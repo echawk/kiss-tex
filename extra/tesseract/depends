@@ -1,0 +1,5 @@
+cmake make
+curl
+gcc
+leptonica
+libarchive
