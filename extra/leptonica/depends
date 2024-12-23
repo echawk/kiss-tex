@@ -1,0 +1,7 @@
+cmake make
+giflib
+libjpeg-turbo
+libpng
+libwebp
+openjpeg2
+tiff
