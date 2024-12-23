@@ -2,7 +2,10 @@
 
 export DESTDIR="$1"
 
-rm -rf expat jbig2dec jpeg lcms2mt libpng openjpeg tiff zlib
+export CFLAGS="$CFLAGS -w"
+export CXXFLAGS="$CXXFLAGS -w"
+
+rm -rf cups expat jbig2dec jpeg lcms2mt libpng openjpeg tesseract tiff zlib 
 
 sed "s/gscms_transformm_color_const/gscms_transform_color_const/" \
     base/gsicc_lcms2.c > _

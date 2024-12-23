@@ -4,6 +4,8 @@ jbig2dec
 lcms
 libjpeg-turbo
 libpng
+leptonica
 openjpeg2
+tesseract
 tiff
 zlib
