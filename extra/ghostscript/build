@@ -2,7 +2,7 @@
 
 export DESTDIR="$1"
 
-export CFLAGS="$CFLAGS -w"
+export CFLAGS="$CFLAGS -std=c17 -w"
 export CXXFLAGS="$CXXFLAGS -w"
 
 rm -rf cups expat jbig2dec jpeg lcms2mt libpng openjpeg tesseract tiff zlib 
