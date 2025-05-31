@@ -20,10 +20,15 @@ build_freetype() (
 build_graphite() (
     cd graphite
 
+    rm -rf tests/
+    sed '/add_subdirectory(tests)/d' CMakeLists.txt > _
+    mv -f _ CMakeLists.txt
+
     cmake -B build \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_C_FLAGS:STRING="$CFLAGS" \
         -DCMAKE_BUILD_TYPE:STRING=None \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
         -DGRAPHITE2_COMPARE_RENDERER=OFF \
         -DGRAPHITE2_NFILEFACE=ON
 
