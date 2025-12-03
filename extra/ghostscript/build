@@ -2,19 +2,23 @@
 
 export DESTDIR="$1"
 
-export CFLAGS="$CFLAGS -std=c17 -w"
-export CXXFLAGS="$CXXFLAGS -w"
+export CFLAGS="$CFLAGS -std=gnu89 -fPIC -w"
+export CXXFLAGS="$CXXFLAGS -fPIC -w"
 
-rm -rf cups expat jbig2dec jpeg lcms2mt libpng openjpeg tesseract tiff zlib 
+# fix parallel builds
+sed -e 's/ECHO_XE/ECHOGS_XE/g' \
+	-e 's/^\($(GLOBJ)md5.$(OBJ) :.*\)/\1 $(ECHOGS_XE)/' \
+	base/lib.mak > _
+mv -f _ base/lib.mak
 
-sed "s/gscms_transformm_color_const/gscms_transform_color_const/" \
-    base/gsicc_lcms2.c > _
-mv -f _ base/gsicc_lcms2.c
+rm -rf cups expat jbig2dec jpeg lcms2mt libpng openjpeg tesseract tiff zlib
 
 ./configure \
     --prefix=/usr \
     --disable-gtk \
     --disable-dbus \
+    --without-libpaper \
+    --without-tesseract \
     --with-drivers=ALL \
     --with-fontpaths=/usr/share/ghostscript/fonts/:/usr/share/fonts
 
